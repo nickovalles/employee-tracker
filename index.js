@@ -2,6 +2,7 @@
 var inquirer = require('inquirer');
 var consoleTable = require('console.table');
 var mysql = require('mysql');
+const { allowedNodeEnvironmentFlags } = require('process');
 
 // create connection here 
 // test why the connection isnt working 
@@ -19,11 +20,53 @@ var connection = mysql.createConnection({
 // Package?
 // .prompt
 function runSearch() {
+    inquirer
+    .prompt({
+        type: 'list',
+        name: 'action',
+        message: 'What Would You Like To Do?',
+        choices: ['View All Departments',
+            'View All Roles',
+            'View All Employees',
+            'Add A Department',
+            'Add a Role',
+            'Add an Employee',
+            'Update Employee Role',
+        new inquirer.Separator()
+    ]
+    })
+    // Inset Switch statements based on user response
+    .then(function (answer){
+        console.log(answer.action);
+        switch (answer.action) {
+            case "View All Departments":
+                viewDepartments();
+                break;
 
+            case "View All Roles":
+                viewRoles();
+                break;
+
+            case "Add a Department":
+                addDepartment();
+                break;
+
+            case "Add a Role":
+                addRole();
+                break;
+
+            case "Add an Employee":
+                addEmployee();
+                break;
+
+            case "Update Employee Role":
+                updatedEmployee();
+                break;
+                
+        }
+    });
 }
 
-
-// Insert Switch statements based on user response
 
 // Create function to VIEW all departments in CMS
 

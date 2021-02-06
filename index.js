@@ -2,7 +2,6 @@
 var inquirer = require('inquirer');
 var consoleTable = require('console.table');
 var mysql = require('mysql');
-const { allowedNodeEnvironmentFlags } = require('process');
 
 // create connection here 
 // test why the connection isnt working 

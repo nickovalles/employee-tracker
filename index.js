@@ -13,3 +13,27 @@ var connection = mysql.createConnection({
     password: '',
     database: '',
 });
+
+
+// Search Features
+// Package?
+// .prompt
+function runSearch() {
+
+}
+
+
+// Insert Switch statements based on user response
+
+// Create function to VIEW all departments in CMS
+
+// Create function to VIEW all roles in CMS
+
+// Create function to VIEW all employees in CMS
+
+// Create function to ADD new department in CMS
+
+// Create function to ADD new roles in CMS
+
+// Create function to ADD new employees in CMS
+

@@ -1,7 +1,7 @@
 // insert packages here
 var inquirer = require('inquirer');
 var consoleTable = require('console.table');
-var mysql = require('mysql');
+var mysql = require('mysql2');
 
 // create connection here 
 // test why the connection isnt working 

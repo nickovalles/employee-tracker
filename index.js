@@ -46,7 +46,7 @@ function runSearch() {
                 viewRoles();
                 break;
 
-            case "View All Employees";
+            case "View All Employees":
                 viewEmployees();
                 break;
 

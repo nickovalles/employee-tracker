@@ -63,7 +63,7 @@ function runSearch() {
                 break;
 
             case "Update Employee Role":
-                updatedEmployee();
+                updateEmployee();
                 break;
                 
         }

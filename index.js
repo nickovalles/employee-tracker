@@ -99,8 +99,139 @@ function viewEmployees() {
 }
 
 // Create function to ADD new department in CMS
+function addDepartment() {
+    inquirer
+    .prompt({
+        type: 'input',
+        message: 'Enter Department Name',
+        name: 'department'
+    })
+    .then(function(answer) {
+        connection.query(
+            'INSERT INTO department SET ?',
+            {name: answer.department},
+            function(err, answer) {
+                if (err) {
+                    throw err;
+                }
+            }
+        ),
+        console.log("");
+        console.table(answer);
+        runSearch();
+    })
+}
 
 // Create function to ADD new roles in CMS
+function addRole() {
+    inquirer
+    .prompt([
+    {
+        type: 'input',
+        message: 'Enter employee role',
+        name: 'addroles'
+    },
+    {
+        type: 'input',
+        message: 'Enter employee salary',
+        name: 'addsalary'
+    },
+    {
+        type: 'input',
+        message: 'Enter employee department id',
+        name: 'addDeptId'
+    }
+    ])
+    .then(function(answer) {
+        connection.query(
+            'INSERT INTO roles SET ?',
+            {
+                title: answer.addroles,
+                salary: answer.addsalary,
+                department_id: answer.addDeptId
+            }
+        ),
+        console.log("");
+        console.log(answer);
+        runSearch();
+    })
+}
+
 
 // Create function to ADD new employees in CMS
+function addEmployee() {
+    inquirer
+    .prompt([
+        {
+            type: 'input',
+            message: 'Enter employee first name',
+            name: 'firstname'
+        },
+        {
+            type: 'input',
+            message: 'Enter employee last name',
+            name: 'lastname'
+        },
+        {
+            type: 'input',
+            message: 'What is the employees role id',
+            name: 'rolesID'
+        },
+        {
+            type: 'input',
+            message: 'What is the employees manager id',
+            name: 'managerID'
+        }
+    ])
+    .then(function(answer) {
+        connection.query(
+            'INSERT INTO employee SET ?',
+            {
+                first_name: answer.firstname,
+                last_name: answer.lastname,
+                roles_id: answer.rolesID,
+                manager_id: answer.managerID
+            },
+            function(err, answer) {
+                if (err) {
+                    throw err;
+                }
+                console.log("");
+                console.table(answer);
+            }
+        );
+        runSearch();
+    });
+}
 
+// UPDATE
+
+function updateEmployee() {
+    inquirer
+      .prompt({
+        name: "id",
+        type: "input",
+        message: "Enter employee id",
+      })
+      .then(function (answer) {
+        var id = answer.id;
+  
+        inquirer
+          .prompt({
+            name: "roleId",
+            type: "input",
+            message: "Enter role id",
+          })
+          .then(function (answer) {
+            var roleId = answer.roleId;
+  
+            var query = "UPDATE employee SET roles_id=? WHERE id=?";
+            connection.query(query, [roleId, id], function (err, res) {
+              if (err) {
+                console.log(err);
+              }
+              runSearch();
+            });
+          });
+      });
+  }

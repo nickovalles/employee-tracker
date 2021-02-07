@@ -7,11 +7,11 @@ var mysql = require('mysql');
 // test why the connection isnt working 
 // go over the documentation
 var connection = mysql.createConnection({
-    host: '',
-    port: '',
-    user: '',
-    password: '',
-    database: '',
+    host: 'localhost',
+    port: '3306',
+    user: 'root',
+    password: 'UofUboot2020#',
+    database: 'employee_db',
 });
 
 
@@ -68,10 +68,35 @@ function runSearch() {
 
 
 // Create function to VIEW all departments in CMS
+function viewDepartments() {
+    connection.query('SELECT * FROM department', function (err, results) {
+        console.log("");
+        console.table(results);
+        if (err) throw err;
+    });   
+    runSearch();
+}
 
 // Create function to VIEW all roles in CMS
+function viewRoles() {
+    connection.query('SELECT * FROM roles', function(err, results) {
+        console.log("");
+        console.table(results);
+        if (err) throw err;
+    });
+    runSearch();
+}
 
 // Create function to VIEW all employees in CMS
+function viewEmployees() {
+    var query = 'SELECT employee.id, employee.first_name, employee.last_name, employee.manager_id, roles.title, department.name AS department, roles.salary FROM employee LEFT JOIN roles on employee.roles_id = roles.id LEFT JOIN department on roles.department_id = department.id';
+    connection.query(query, function(err, results) {
+        console.log("");
+        console.table(results);
+        if (err) throw err;
+    });
+    runSearch();
+}
 
 // Create function to ADD new department in CMS
 

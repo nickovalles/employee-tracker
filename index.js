@@ -46,6 +46,10 @@ function runSearch() {
                 viewRoles();
                 break;
 
+            case "View All Employees";
+                viewEmployees();
+                break;
+
             case "Add a Department":
                 addDepartment();
                 break;

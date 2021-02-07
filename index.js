@@ -27,7 +27,7 @@ function runSearch() {
         choices: ['View All Departments',
             'View All Roles',
             'View All Employees',
-            'Add A Department',
+            'Add a Department',
             'Add a Role',
             'Add an Employee',
             'Update Employee Role',
@@ -69,6 +69,8 @@ function runSearch() {
         }
     });
 }
+
+runSearch();
 
 
 // Create function to VIEW all departments in CMS
@@ -239,3 +241,4 @@ function updateEmployee() {
           });
       });
   }
+

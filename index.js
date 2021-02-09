@@ -11,7 +11,7 @@ var connection = mysql.createConnection({
     port: '3306',
     user: 'root',
     password: 'UofUboot2020#',
-    database: 'employee_db',
+    database: 'employeedata',
 });
 
 
@@ -39,7 +39,11 @@ function runSearch() {
         console.log(answer.action);
         switch (answer.action) {
             case "View All Departments":
-                viewDepartments();
+                try {
+                  viewDepartments();
+                } catch (error) {
+                  console.error(error);
+                }
                 break;
 
             case "View All Roles":

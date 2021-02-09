@@ -1,10 +1,10 @@
 /* DROP */
 
-DROP DATABASE IF EXISTS employees_db;
+DROP DATABASE IF EXISTS employeedata;
 
 /* CREATE DB */
-CREATE DATABASE employees_db;
-USE employees_db;
+CREATE DATABASE employeedata;
+USE employeedata;
 
 /* CREATE table dept */
 CREATE TABLE department (
